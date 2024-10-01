@@ -985,7 +985,7 @@ sequence:
   - alias: iOS Configuration Options
     variables:
       interruption_level: !input interruption_level
-      sound: ""
+      sound: "{{ iif(field_notification_sound is defined, field_notification_sound, "") }}"
       # presentation_options: !input presentation_options
       # shortcut: !input shortcut # Unlikely to be supported due to complexity.
       # [Critical Notifications] - https://companion.home-assistant.io/docs/notifications/critical-notifications
