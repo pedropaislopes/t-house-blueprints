@@ -652,6 +652,19 @@ blueprint:
         text:
 
     ##############################
+    # Input: Notification Sound
+    ##############################
+    notification_sound:
+      name: "🔈 Notification Sound"
+      description: >
+        Filename of notification sound (could be find on Home Assistant Companion app).  \n\n Examples:  Doorbell.caf
+        `Optional`
+        ` iOS Only`
+      default: ""
+      selector:
+        text:
+
+    ##############################
     # Input: Attachments
     ##############################
     attachment_type:
@@ -895,6 +908,14 @@ fields:
     selector:
       text:
 
+  field_notification_sound:
+    name: "🔗 Notification Sound"
+    description: "Override notification sound"
+    example: !input notification_sound
+    default: !input notification_sound
+    selector:
+      text:
+
   # [Unsupported due to `choose.sequence`] - Can't pass variables to choose.sequence.
   # field_timeout_action:
   #   name: "⌛️ Timeout Action(s)"
@@ -958,6 +979,7 @@ sequence:
   - alias: iOS Configuration Options
     variables:
       interruption_level: !input interruption_level
+      sound: ""
       # presentation_options: !input presentation_options
       # shortcut: !input shortcut # Unlikely to be supported due to complexity.
       # [Critical Notifications] - https://companion.home-assistant.io/docs/notifications/critical-notifications
@@ -1132,6 +1154,7 @@ sequence:
           {% set payload.data = dict(payload.data, **{ 'subtitle': subtitle }) %}
           {% set push.d = dict(push.d, **{ 'interruption-level': interruption_level }) %}
           {% if notification_link|length %}{% set payload.data = dict(payload.data, **{ 'url': notification_link }) %}{% endif %}
+          {% if notification_sound|length %}{% set push.d = dict(push.d, **{ 'sound': sound }) %}{% endif %}
           {% if attachment_type == 'camera_entity' %}{% set payload.data = dict(payload.data, **{ 'entity_id': attachment_camera_entity }) %}{% endif %}
           {% set payload.data = dict(payload.data, **{ 'push': push.d }) %}
         {% else %}
