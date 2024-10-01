@@ -659,8 +659,12 @@ blueprint:
     notification_sound:
       name: "🔈 Notification Sound"
       description: >
-        Filename of notification sound (could be find on Home Assistant Companion app).  \n\n Examples:  Doorbell.caf
+        Filename of notification sound (could be find on Home Assistant Companion app).
+        
+        Examples:  Doorbell.caf
+        
         `Optional`
+        
         ` iOS Only`
       default: ""
       selector:
@@ -1156,7 +1160,7 @@ sequence:
           {% set payload.data = dict(payload.data, **{ 'subtitle': subtitle }) %}
           {% set push.d = dict(push.d, **{ 'interruption-level': interruption_level }) %}
           {% if notification_link|length %}{% set payload.data = dict(payload.data, **{ 'url': notification_link }) %}{% endif %}
-          {% if notification_sound|length %}{% set push.d = dict(push.d, **{ 'sound': sound }) %}{% endif %}
+          {% if notification_sound|length %}{% set push.d = dict(push.d, **{ 'sound': notification_sound }) %}{% endif %}
           {% if attachment_type == 'camera_entity' %}{% set payload.data = dict(payload.data, **{ 'entity_id': attachment_camera_entity }) %}{% endif %}
           {% set payload.data = dict(payload.data, **{ 'push': push.d }) %}
         {% else %}
