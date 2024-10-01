@@ -658,14 +658,7 @@ blueprint:
     ##############################
     notification_sound:
       name: "🔈 Notification Sound"
-      description: >
-        Filename of notification sound (could be find on Home Assistant Companion app).
-        
-        Examples:  Doorbell.caf
-        
-        `Optional`
-        
-        ` iOS Only`
+      description: "Filename of notification sound (could be find on Home Assistant Companion app).\n\n Examples:  Doorbell.caf\n `Optional`\n ` iOS Only`"
       default: ""
       selector:
         text:
@@ -915,7 +908,7 @@ fields:
       text:
 
   field_notification_sound:
-    name: "🔗 Notification Sound"
+    name: "🔈 Notification Sound"
     description: "Override notification sound"
     example: !input notification_sound
     default: !input notification_sound
