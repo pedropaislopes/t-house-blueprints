@@ -9,7 +9,7 @@ blueprint:
   description: >-
     <div>
       <h2>🔔 Notifications</h2>
-      <b>Version 2.0.3 Beta</b> | 🔗 <a href="https://github.com/pedropaislopes/t-house-blueprints/blob/main/notifications.yaml" target="_blank">Github Link</a> | 💬 <a href="https://community.home-assistant.io/t/notifications-actionable-mobile-notifications-script-with-optional-timeout-feature-and-camera-snapshots-works-with-ios-android/551552" target="_blank">Community Post</a>
+      <b>Version 2.0.3 Beta</b> | 🔗 <a href="https://github.com/samuelthng/t-house-blueprints/blob/main/notifications.yaml" target="_blank">Github Link</a> | 💬 <a href="https://community.home-assistant.io/t/notifications-actionable-mobile-notifications-script-with-optional-timeout-feature-and-camera-snapshots-works-with-ios-android/551552" target="_blank">Community Post</a>
       </div>
       <br>
 
@@ -658,7 +658,7 @@ blueprint:
     ##############################
     notification_sound:
       name: "🔈 Notification Sound"
-      description: "Filename of notification sound (could be find on Home Assistant Companion app).\n\n Examples:  Doorbell.caf\n `Optional`\n ` iOS Only`"
+      description: "Use a custom sound for the notification.  \n\nSee [documentation](https://companion.home-assistant.io/docs/notifications/notification-sounds) for configuration options.  \n\n  \n\n` iOS Only`, `Optional`"
       default: ""
       selector:
         text:
@@ -909,7 +909,7 @@ fields:
 
   field_notification_sound:
     name: "🔈 Notification Sound"
-    description: "Override notification sound"
+    description: "Override custom notification sound"
     example: !input notification_sound
     default: !input notification_sound
     selector:
